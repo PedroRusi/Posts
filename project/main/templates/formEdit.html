@@ -1,0 +1,31 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <form action="../edit/{{ id }}" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Напишите название" value="{{ post.name }}" required>
+        <textarea name="text" id="" placeholder="Напишите текст статьи" required>{{ post.text }}</textarea>
+        <input type="url" name="image_url" placeholder="Вставте URL фотографии" value="{{ post.image_url }}" required>
+        <div class="category">
+            <select name="category">
+                <option value="Животные">Животные</option>
+                <option value="Игры">Игры</option>
+                <option value="Еда">Еда</option>
+                <option value="Новости">Новости</option>
+                <option value="Учёба">Учёба</option>
+            </select>  
+            <p class="title">Выберите категорию:</p>      
+        </div>
+        <button type="submit">Обновить</button>
+    </form>
+</body>
+</html>

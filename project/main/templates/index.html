@@ -1,0 +1,30 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <section class="posts">
+        {% for post in posts %}
+        <div class="post">
+            <div class="img">
+                <img src="{{ post.image_url }}" alt="">
+            </div>
+            <div class="block">
+                <h1 class="title">{{post.name}}</h1>
+                <h2 class="suptitle">Категория: {{ post.category }}</h2>
+                <p class="text">{{ post.text }}</p>
+                <p class="text"><a href="formEdit/{{ post.id }}">Изменить пост</a> / <a href="delete/{{ post.id }}">Удалить пост</a></p>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+        <a href="formCreate" class="btn">Добавить запись</a>
+</body>
+</html>
